@@ -1,25 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import ExtractProps from "./components/ExtractProps";
+import GenericProps from "./components/GenericProps";
+import RestrictingProps from "./components/RestrictingProps";
+import TemplateLiteralsAndExclude from "./components/TemplateLiteralsAndExclude";
+import PolyMorphicComponents from './components/PolyMorphicComponents'
+import WrappingHtmlElements from "./components/WrappingHtmlElements/WrappingHtmlElements";
 
+// Generic props
+const items = [0,1,2]
+function onClick(param: number) {
+  console.log(param)
+}
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <GenericProps items={items} onClick={onClick}/>
+      <TemplateLiteralsAndExclude/>
+      <RestrictingProps value={10} isPositive />
+      <ExtractProps items={items} onClick={onClick}/>
+      <PolyMorphicComponents as={"p"}/>
+      <WrappingHtmlElements/>
+    </>
   );
 }
 
